@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="747.878" height="700.862" viewBox="0 0 747.878 700.862">
+    <defs>
+        <filter id="f1" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="50" />
+        </filter>
+    </defs>
+    <g id="Polygone_1" data-name="Polygone 1" transform="translate(206.526 533.699) rotate(-97)" fill="rgba(232,138,154,0.21)">
+        <path filter="url(#f1)" d="M 322.2418518066406 376.5 L 0.7581393718719482 376.5 L 161.5 1.269774317741394 L 322.2418518066406 376.5 Z" stroke="none"/>
+    </g>
+</svg>

@@ -1,0 +1,15 @@
+{
+    "/js/admin.js": "/js/admin.js",
+    "/js/admin.create.js": "/js/admin.create.js",
+    "/js/admin.edit.js": "/js/admin.edit.js",
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/mobile-master.css": "/css/mobile-master.css",
+    "/css/mobile-admin.css": "/css/mobile-admin.css",
+    "/css/large-master.css": "/css/large-master.css",
+    "/css/large-admin.css": "/css/large-admin.css",
+    "/js/app.min.js": "/js/app.min.js",
+    "/js/admin.min.js": "/js/admin.min.js",
+    "/js/admin.edit.min.js": "/js/admin.edit.min.js",
+    "/js/admin.create.min.js": "/js/admin.create.min.js"
+}
