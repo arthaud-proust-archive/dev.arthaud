@@ -145,6 +145,7 @@ $(()=>{
                 <img class="itemImage form-control" type="text" src="" alt="Aucune image">
                 <input class="itemInputImage" data-index="${JSON.parse(sectionOldItems).length-1}" type="file">
                 <input class="itemUrl form-control" type="text" placeholder="Url de l'item" value="">
+                <input class="itemTitle form-control" type="text" placeholder="Titre de l'item">
                 <textarea rows=3 class="itemDesc form-control" type="text" placeholder="Description de l'item"></textarea>
             </div>
             `).insertBefore(this)
