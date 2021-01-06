@@ -20,6 +20,36 @@ const navbarCollapse = document.querySelector('.navbar-collapse.collapse');
 const sections = document.querySelectorAll('.section');
 const sectionsWithItems = document.querySelectorAll('.section.items');
 
+function getViewport() {
+
+    var viewPortWidth;
+    var viewPortHeight;
+   
+    // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+    if (typeof window.innerWidth != 'undefined') {
+      viewPortWidth = window.innerWidth,
+      viewPortHeight = window.innerHeight
+    }
+   
+   // IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+    else if (typeof document.documentElement != 'undefined'
+    && typeof document.documentElement.clientWidth !=
+    'undefined' && document.documentElement.clientWidth != 0) {
+       viewPortWidth = document.documentElement.clientWidth,
+       viewPortHeight = document.documentElement.clientHeight
+    }
+   
+    // older versions of IE
+    else {
+      viewPortWidth = document.getElementsByTagName('body')[0].clientWidth,
+      viewPortHeight = document.getElementsByTagName('body')[0].clientHeight
+    }
+    window.viewport = {
+        width: viewPortWidth,
+        height: viewPortHeight
+    }
+}
+
 // function scrollFunction() {
 //     if (document.body.scrollTop > sizeScrollNav || document.documentElement.scrollTop > sizeScrollNav) {
 //         navbar.classList.add('fixed-top');
@@ -36,24 +66,28 @@ const sectionsWithItems = document.querySelectorAll('.section.items');
 
 
 function scrollFunction(e) {
+    if(++window.scrollCounter >10) {
+        // actParallaxList();
+    }
     var st = window.pageYOffset || document.documentElement.scrollTop;
     if(st == lastScrollTop) return
+    // parallaxItemsToShow.forEach((item, index)=>{
     parallaxItems.forEach((item, index)=>{
-        let ext = parallaxItemsParams[index].styles.top.replace(/(-+|\d+)/g, '');
-        item.style.top = parseFloat(parallaxItemsParams[index].styles.top.replace(/[a-zA-Z]/g, ''))+parseFloat(item.dataset.sensibility)*st+ext
-        // light.style.top = parseInt(light.style.top, 10)+3+'px'
+        if(!item.classList.contains('toShow')) return;
+        if(parallaxItemsParams[index].showedAt == undefined) parallaxItemsParams[index].showedAt = st;
+        item.style.top = parseFloat(parallaxItemsParams[index].styles.top.engineVal)+parseFloat(item.dataset.sensibility)*(st-parallaxItemsParams[index].showedAt)+parallaxItemsParams[index].styles.top.unit
     })
 
-    sectionsWithItems.forEach(section=>{
-        if( section.scrollHeight+150 > st && st > section.scrollHeight - 150) {
-            section.querySelector('.imageCenter').classList.add('pop')
-            let poppers = section.querySelectorAll('.popper');
-            poppers.forEach((popper, index)=>{
-                popper.style.animationDelay = 1.5*index/poppers.length+"s";
-                popper.classList.add('pop')
-            })
-        }
-    })
+    // sectionsWithItems.forEach(section=>{
+    //     if( section.scrollHeight+150 > st && st > section.scrollHeight - 150) {
+    //         section.querySelector('.imageCenter').classList.add('pop')
+    //         let poppers = section.querySelectorAll('.popper');
+    //         poppers.forEach((popper, index)=>{
+    //             popper.style.animationDelay = 1.5*index/poppers.length+"s";
+    //             popper.classList.add('pop')
+    //         })
+    //     }
+    // })
     lastScrollTop = st <= 0 ? 0 : st;
 }
 
@@ -68,7 +102,7 @@ function scrollAnchors(e, respond = null) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-
+    getViewport()
     document.querySelectorAll('a.nav-link[href^="#"]').forEach(el => (el.onclick = scrollAnchors));
 
     popup.getEl('Close').addEventListener('click', function() {
@@ -88,10 +122,39 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     })
     window.lastScrollTop = 0;
+    window.parallaxItemsToShow = document.querySelectorAll('.section-parallaxItem.toShow');
     window.parallaxItems = document.querySelectorAll('.section-parallaxItem');
     window.addEventListener('scroll', scrollFunction);
     window.addEventListener('touchmove', scrollFunction);
 
+    window.parallaxObserver = new IntersectionObserver(function(entries) {
+        if(entries[0].isIntersecting === true) {
+            entries[0]['target'].classList.add('toShow');
+        } else {
+            entries[0]['target'].classList.remove('toShow');
+        }
+    }, { threshold: [0] });
+
+    window.popObserver = new IntersectionObserver(function(entries) {
+        if(entries[0].isIntersecting === true) {
+            let section = entries[0]['target'];
+            section.querySelector('.imageCenter').classList.add('pop')
+            let poppers = section.querySelectorAll('.popper');
+            poppers.forEach((popper, index)=>{
+                popper.style.animationDelay = 1.5*index/poppers.length+"s";
+                popper.classList.add('pop')
+            })
+        } else {
+            // entries[0]['target'].classList.remove('toShow');
+        }
+    }, { threshold: [0.95] });
+    
+    document.querySelectorAll(".section-parallaxItem").forEach(item=>{
+        parallaxObserver.observe(item);
+    })
+    sectionsWithItems.forEach(section=>{
+        popObserver.observe(section)
+    })
 });
 
 
@@ -100,7 +163,7 @@ navbarToggler.onclick = function() {
 }
 
 class CssVal {
-    constructor(value, unit) {
+    constructor(value, unit='') {
         this.isMobileScreen = window.screen.width<768
         this.value = value,
         this.unit = unit;
@@ -158,7 +221,7 @@ class ParallaxItem {
         node.classList.add("parallaxItem-"+index);
         node.dataset.sensibility = this.sensibility;
         for (let [key, value] of Object.entries(this.styles)) {
-            node.style[key] = value;
+            node.style[key] = value.val;
         }
 
         if(this.type=='shape') {
@@ -199,12 +262,12 @@ const parallaxItemsParams = {
         sensibility: -0.4, 
         styles: {
             // top: -370,
-            top: '-90px',
+            top: new CssVal(-90,'px'),
             // right: -400
-            left: '50%',
-            height: '150px',
-            width: '150px',
-            zIndex: '100'
+            left: new CssVal(50,'%'),
+            height: new CssVal(150,'px'),
+            width: new CssVal(150,'px'),
+            zIndex: new CssVal(100)
         },
         innerHTML: `
         <img src="/assets/img/me1.jpg" class="circle">
@@ -216,24 +279,42 @@ const parallaxItemsParams = {
         sensibility: -0.4, 
         styles: {
         // top: -370,
-        top: '300px',
+        top: new CssVal(300, 'px'),
         // right: -400
-        right: '-10px',
-        zIndex:'100'
+        right: new CssVal(-10, 'px'),
+        zIndex: new CssVal(1000),
+        height: new CssVal([60,100],'px'),
+        width: new CssVal([60,100],'px')
         }
     }),
     2: new ParallaxItem({
         type: 'shape',
-        shapeName: 'shape2.svg',
+        shapeName: 'shape1.svg',
         sensibility: -0.4, 
         styles: {
         // top: -370,
-        top: '200px',
+        top: new CssVal(200, 'px'),
         // right: -400
-        left: '50px',
-        zIndex:'100'
+        left: new CssVal(50, 'px'),
+        zIndex: new CssVal(1000),
+        height: new CssVal([30,70],'px'),
+        width: new CssVal([30,70],'px')
         }
-    })
+    }),
+    1: new ParallaxItem({
+        type: 'shape',
+        shapeName: 'shape1.svg',
+        sensibility: -0.4, 
+        styles: {
+        // top: -370,
+        top: new CssVal(300, 'px'),
+        // right: -400
+        right: new CssVal(-10, 'px'),
+        zIndex: new CssVal(1000),
+        height: new CssVal([60,100],'px'),
+        width: new CssVal([60,100],'px')
+        }
+    }),
 }
 
 const loadSections = function() {

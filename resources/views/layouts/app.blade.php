@@ -136,18 +136,19 @@ $desc = "Étudiant autodidacte en développement web à Bordeaux, je suis passio
                 link.addEventListener('load', function () {document.querySelector('body').setAttribute('class', '')});
             }
             
-        } catch (e) {document.querySelector('body').setAttribute('class', '')}
+        } catch (e) {
+            document.querySelector('body').setAttribute('class', '')
+        }
     };
     </script>
     <style>
         body.loading::before {
             font-family: Arial, Helvetica, sans-serif;
-            z-index: 2000;
+            z-index: 20000;
             font-size: 3rem;
-            <!-- content: 'Share things'; -->
-            content: '';
+            content: 'Arthaud Proust';
             background: #121215;
-            color: #f89345;
+            color: #eea180;
             position: fixed;
             top: 0;
             left: 0;
