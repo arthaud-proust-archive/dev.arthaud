@@ -74,7 +74,9 @@ function scrollFunction(e) {
     // parallaxItemsToShow.forEach((item, index)=>{
     parallaxItems.forEach((item, index)=>{
         if(!item.classList.contains('toShow')) return;
-        if(parallaxItemsParams[index].showedAt == undefined) parallaxItemsParams[index].showedAt = st;
+        if(parallaxItemsParams[index].showedAt == undefined) {
+            parallaxItemsParams[index].showedAt = index==0?0:st;
+        }
         item.style.top = parseFloat(parallaxItemsParams[index].styles.top.engineVal)+parseFloat(item.dataset.sensibility)*(st-parallaxItemsParams[index].showedAt)+parallaxItemsParams[index].styles.top.unit
     })
 
