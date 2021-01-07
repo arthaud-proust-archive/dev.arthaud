@@ -5,7 +5,7 @@ $siteurl = "arthaud.dev";
 $sitename = "Arthaud Proust";
 $pagename = $title ?? 'Accueil';
 $titleU = $pagename.' - '.$sitename;
-$desc = "Étudiant autodidacte en développement web à Bordeaux, je suis passionné depuis l'enfance par la création. Aujourd'hui je m'oriente vers l'informatique en vue d'en faire mon métier.";
+$desc = "Étudiant autodidacte en développement web à Bordeaux, je suis passionné depuis l'enfance par la création. Arthaud Proust";
 @endphp
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="dark">
