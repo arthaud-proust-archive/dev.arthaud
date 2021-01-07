@@ -4,18 +4,6 @@ use GuzzleHttp\RequestOptions;
 use Spatie\Sitemap\Crawler\Profile;
 use Psr\Http\Message\UriInterface;
 
-class CustomCrawlProfile extends Profile
-{
-    public function shouldCrawl(UriInterface $url): bool
-    {
-        if ($url->getHost() == 'localhost') {
-            return false;
-        }
-        
-        return $url->getPath() === '/';
-    }
-}
-
 return [
 
     /*
