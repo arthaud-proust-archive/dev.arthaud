@@ -303,7 +303,7 @@ const parallaxItemsParams = {
         width: new CssVal([30,70],'px')
         }
     }),
-    1: new ParallaxItem({
+    3: new ParallaxItem({
         type: 'shape',
         shapeName: 'shape1.svg',
         sensibility: -0.4, 
@@ -322,10 +322,10 @@ const parallaxItemsParams = {
 const loadSections = function() {
     sections.forEach((section, index)=>{
         if(Object.keys(parallaxItemsParams).includes(index.toString())) {
-            let content = section.querySelector('.section-content');
-            content.innerHTML = mdConverter.makeHtml(content.innerText.decoded);
             section.appendChild(parallaxItemsParams[index].getHtml(index));
         }
+        let content = section.querySelector('.section-content');
+        content.innerHTML = mdConverter.makeHtml(content.innerText.decoded);
     })
     
     sectionsWithItems.forEach((section, index)=>{
