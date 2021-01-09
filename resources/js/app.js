@@ -138,18 +138,26 @@ document.addEventListener("DOMContentLoaded", function() {
     }, { threshold: [0] });
 
     window.popObserver = new IntersectionObserver(function(entries) {
-        if(entries[0].isIntersecting === true) {
-            let section = entries[0]['target'];
-            section.querySelector('.imageCenter').classList.add('pop')
-            let poppers = section.querySelectorAll('.popper');
-            poppers.forEach((popper, index)=>{
-                popper.style.animationDelay = 1.5*index/poppers.length+"s";
-                popper.classList.add('pop')
-            })
-        } else {
-            // entries[0]['target'].classList.remove('toShow');
-        }
-    }, { threshold: [0.95] });
+        entries.forEach(function(entry) {
+            console.log(entry.time);
+            if(entry.isIntersecting === true && entry.time> 1000) {
+                let section = entry['target'];
+                section.querySelector('.imageCenter').classList.add('pop')
+                let poppers = section.querySelectorAll('.popper');
+                poppers.forEach((popper, index)=>{
+                    popper.style.animationDelay = 1.5*index/poppers.length+"s";
+                    popper.classList.add('pop')
+                })
+            } else {
+                // entry['target'].classList.remove('toShow');
+            }
+        });
+    // }, { threshold: [0.95] });
+    }, { 
+        threshold: [0.95], 
+        root: null,
+        rootMargin: '150px'
+    });
     
     document.querySelectorAll(".section-parallaxItem").forEach(item=>{
         parallaxObserver.observe(item);
@@ -306,7 +314,7 @@ const parallaxItemsParams = {
     3: new ParallaxItem({
         type: 'shape',
         shapeName: 'shape1.svg',
-        sensibility: -0.4, 
+        sensibility: -0.6, 
         styles: {
         // top: -370,
         top: new CssVal(300, 'px'),
