@@ -183,7 +183,6 @@ $desc = "Étudiant autodidacte en développement web à Bordeaux, je suis passio
         <footer>
             <a class="credit" href="https://arthaud.dev">Développé par <u>Arthaud Proust</u></a>
             <span class="copyright">&copy 2020 Tous droits réservés</span>
-            <a class="admin" href="{{ route('login') }}"><u>Accès administrateur</u></a>
         </footer>
     </div>
 </body>

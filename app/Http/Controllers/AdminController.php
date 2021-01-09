@@ -25,7 +25,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $short_sections = Section::select('id','order','type','title', 'image_url', 'anchor')->orderBy('order')->get();
+        $short_sections = Section::select('id','order', 'pages', 'type','title', 'image_url', 'anchor')->orderBy('order')->get();
         return view('admin.index', compact('short_sections'));
     }
 

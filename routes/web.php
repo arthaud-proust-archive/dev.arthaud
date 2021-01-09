@@ -32,4 +32,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/update-orders', [AdminController::class, 'updateOrders'])->name('updateOrdersSections');
 });
 
-Route::get('/{pageName}', [HomeController::class, 'show'])->name('showPage');
+Route::get('/{pageName}', [HomeController::class, 'showPage'])->name('showPage');
+Route::get('/{category}/{pageName}', [HomeController::class, 'showCategoryPage'])->name('showCategoryPage');
+Route::get('/{category}/{subCategory}/{pageName}', [HomeController::class, 'showSubCategoryPage'])->name('showSubCategoryPage');

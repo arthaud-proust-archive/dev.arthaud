@@ -26,9 +26,33 @@ class HomeController extends Controller
         return view('home', compact('sections'));
     }
 
-    public function show($pageName)
+    public function showPage($pageName)
     {
         $sections = Section::where('pages', 'LIKE', '%/'.$pageName.',%')->orderBy('order')->get();
+        if($sections->count()==0) {
+            $sections = Section::where('title', ucfirst(preg_replace('/-/',' ', $pageName)))->orderBy('order')->get();
+            if($sections->count()==0) {
+                abort(404);
+            }
+        }
+        return view('page', compact('sections'));
+    }
+
+    public function showCategoryPage($category, $pageName)
+    {
+        $sections = Section::where('pages', 'LIKE', '%/'.$category.'/'.$pageName.',%')->orderBy('order')->get();
+        if($sections->count()==0) {
+            $sections = Section::where('title', ucfirst(preg_replace('/-/',' ', $pageName)))->orderBy('order')->get();
+            if($sections->count()==0) {
+                abort(404);
+            }
+        }
+        return view('page', compact('sections'));
+    }
+
+    public function showSubCategoryPage($category, $subcategory, $pageName)
+    {
+        $sections = Section::where('pages', 'LIKE', '%/'.$category.'/'.$subcategory.'/'.$pageName.',%')->orderBy('order')->get();
         if($sections->count()==0) {
             $sections = Section::where('title', ucfirst(preg_replace('/-/',' ', $pageName)))->orderBy('order')->get();
             if($sections->count()==0) {

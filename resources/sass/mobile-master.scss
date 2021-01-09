@@ -199,6 +199,7 @@ main {
     &::before, &::after {
         border-radius: 30px;
     }
+    
     &::before {
         content: '';
         background: var(--p2);
@@ -211,6 +212,9 @@ main {
         left:2.5%;
         box-shadow: none;
         // background: 1px solid #ec347a6b;
+    }
+    &.items::before{
+        // background: var(--p2) !important;
     }
     &::after  {
         --bWidth: 1px;
@@ -239,48 +243,6 @@ main {
 
 .section:last-of-type {
     margin-bottom: 50px;
-}
-
-@keyframes move1 {
-    0% {
-        transform: none;
-        -webkit-transform: none;
-        -moz-transform: none;
-        -ms-transform: none;
-        -o-transform: none;
-    }
-
-    20% {
-        transform: translate(5%, -10%);
-        -webkit-transform: translate(5%, -10%);
-        -moz-transform: translate(5%, -10%);
-        -ms-transform: translate(5%, -10%);
-        -o-transform: translate(5%, -10%);
-}
-
-    40% {
-        transform: translate(10%, -15%);
-        -webkit-transform: translate(10%, -15%);
-        -moz-transform: translate(10%, -15%);
-        -ms-transform: translate(10%, -15%);
-        -o-transform: translate(10%, -15%);
-}
-
-    40% {
-        transform: translate(10%, -15%) scale(0.9);
-        -webkit-transform: translate(10%, -15%) scale(0.9);
-        -moz-transform: translate(10%, -15%) scale(0.9);
-        -ms-transform: translate(10%, -15%) scale(0.9);
-        -o-transform: translate(10%, -15%) scale(0.9);
-}
-
-    100% {
-        transform: translate(0, 0);
-        -webkit-transform: translate(0, 0);
-        -moz-transform: translate(0, 0);
-        -ms-transform: translate(0, 0);
-        -o-transform: translate(0, 0);
-    }
 }
 
 .section-parallaxItem {
