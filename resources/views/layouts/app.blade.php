@@ -23,9 +23,9 @@ $desc = "Étudiant autodidacte en développement web à Bordeaux, je suis passio
     <meta name="language" content="fr">
 
     <meta http-equiv="content-language" content="fr" />
-    <meta name="url" content="{{ $siteurl }}">
-    <meta name="identifier-URL" content="{{ $siteurl }}">
-    <link rel="canonical" href="{{ $siteurl }}" />
+    <meta name="url" content="https://{{ $siteurl }}">
+    <meta name="identifier-URL" content="https://{{ $siteurl }}">
+    <link rel="canonical" href="https://{{ $siteurl }}" />
 
     <title>{{ $titleU }}</title>
     <meta name="subject" content="informatic">
@@ -39,7 +39,7 @@ $desc = "Étudiant autodidacte en développement web à Bordeaux, je suis passio
     <meta property="og:site_name" content="{{ $sitename }}" />
     <meta property="og:url" content="{{ $siteurl }}" />
     <meta property="og:locale" content="fr" />
-    <meta property="og:image" content="https://{{ $siteurl }}/assets/img/apple/apple-touch-icon-180x180.png" />
+    <meta property="og:image" content="https://{{ $siteurl }}/assets/img/hero.png" />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="{{ $titleU }}" />
@@ -70,12 +70,13 @@ $desc = "Étudiant autodidacte en développement web à Bordeaux, je suis passio
             "@context": "http://schema.org",
             "@type": "Organization",
             "name": "{{ $sitename }}",
-            "url": "{{ $siteurl }}",
+            "url": "https://{{ $siteurl }}",
             "address": "Bordeaux",
             "sameAs": [
                 "https://www.facebook.com/arthaud.dev",
                 "https://instagram.com/arthau.d",
-                "https://www.linkedin.com/in/arthaud-proust/"
+                "https://www.linkedin.com/in/arthaud-proust/",
+                "https://twitter.com/arthaud_proust"
             ]
         }
     </script>

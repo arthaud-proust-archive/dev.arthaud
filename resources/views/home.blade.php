@@ -40,7 +40,7 @@
                         @foreach(json_decode($section->items, true) as $item)
                         <a class="item" data-href="{{$item[1]}}" data-title="{{$item[2]}}" data-desc="{{$item[3]}}">
                             <div class="popper">
-                                <img class="item-image" src="{{$item[0]}}">
+                                <img class="item-image" src="{{$item[0]}}" alt="{{$item[2]}}">
                             </div>
                         </a>
                         @endforeach

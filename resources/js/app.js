@@ -280,7 +280,7 @@ const parallaxItemsParams = {
             zIndex: new CssVal(100)
         },
         innerHTML: `
-        <img src="/assets/img/me1.jpg" class="circle">
+        <img src="/assets/img/me1.jpg" class="circle" alt=" ">
         `
     }),
     1: new ParallaxItem({
@@ -361,7 +361,7 @@ const loadSections = function() {
             item.querySelector('img').classList.add('rotate-reverse');
         })
         sectionItems.innerHTML+=`<div class="section-heighter rotate-reverse" style="height:${circleSize.mBy(1.6)}">
-            <img class="imageCenter popper" src="/assets/img/apple/apple-touch-icon-180x180.png" style="height:${circleSize.dBy(2.5)}; width: ${circleSize.dBy(2.5)}">
+            <img class="imageCenter popper" src="/assets/img/apple/apple-touch-icon-180x180.png" style="height:${circleSize.dBy(2.5)}; width: ${circleSize.dBy(2.5)}" alt=" ">
         </div>`;
         sectionItems.classList.add('rotate');
     })
