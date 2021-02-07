@@ -53,6 +53,8 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    
+    'uurl' => env('APP_UURL', 'arthaud.dev'),
 
     'asset_url' => env('ASSET_URL', null),
 
