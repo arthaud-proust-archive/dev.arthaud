@@ -71,9 +71,11 @@ $desc = "Étudiant autodidacte en développement web à Bordeaux, je suis passio
             "@type": "Organization",
             "name": "{{ $sitename }}",
             "url": "{{ $siteurl }}",
-            "address": "489 Avenue du Maréchal de Lattre de Tassigny",
+            "address": "Bordeaux",
             "sameAs": [
-                "https://www.doctolib.fr/psychologue/bordeaux/rachel-bourgeois-bordeaux"
+                "https://www.facebook.com/arthaud.dev",
+                "https://instagram.com/arthau.d",
+                "https://www.linkedin.com/in/arthaud-proust/"
             ]
         }
     </script>
