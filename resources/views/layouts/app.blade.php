@@ -37,14 +37,14 @@ $desc = "Étudiant autodidacte en développement web à Bordeaux, je suis passio
     <meta property="og:type" content="website" />
     <meta property="og:description" content="{{ $desc }}" />
     <meta property="og:site_name" content="{{ $sitename }}" />
-    <meta property="og:url" content="{{ $siteurl }}" />
+    <meta property="og:url" content="https://{{ $siteurl }}" />
     <meta property="og:locale" content="fr" />
     <meta property="og:image" content="https://{{ $siteurl }}/assets/img/hero.png" />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="{{ $titleU }}" />
     <meta name="twitter:description" content="{{ $desc }}" />
-    <meta name="twitter:site" content="{{ $siteurl }}" />
+    <meta name="twitter:site" content="https://{{ $siteurl }}" />
     <meta name="twitter:image" content="https://{{ $siteurl }}/assets/img/apple/apple-touch-icon-180x180.png" />
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,7 +52,6 @@ $desc = "Étudiant autodidacte en développement web à Bordeaux, je suis passio
     <meta name="apple-mobile-web-app-status-bar-style" content="{{ $themeColor }}">
 
     <!-- Apple meta -->
-    <meta name="apple-mobile-web-app-title" content="{{ $titleU }}" />
     <link rel="apple-touch-icon" href="/assets/img/apple/apple-touch-icon.png" />
     <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/apple/apple-touch-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/apple/apple-touch-icon-72x72.png" />
