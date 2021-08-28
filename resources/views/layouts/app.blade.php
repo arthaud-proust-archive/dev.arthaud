@@ -45,22 +45,22 @@ $desc = "Étudiant autodidacte en développement web à Bordeaux, je suis passio
     <meta name="twitter:title" content="{{ $titleU }}" />
     <meta name="twitter:description" content="{{ $desc }}" />
     <meta name="twitter:site" content="https://{{ $siteurl }}" />
-    <meta name="twitter:image" content="{{ asset('/assets/img/apple/apple-touch-icon-180x180.png') }}" />
+    <meta name="twitter:image" content="{{ asset('/assets/img/apple-touch-icon-180x180.png') }}" />
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="{{ $titleU }}" />
     <meta name="apple-mobile-web-app-status-bar-style" content="{{ $themeColor }}">
 
     <!-- Apple meta -->
-    <link rel="apple-touch-icon" href="{{ asset('/assets/img/apple/apple-touch-icon.png') }}" />
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/assets/img/apple/apple-touch-icon-57x57.png') }}" />
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/assets/img/apple/apple-touch-icon-72x72.png') }}" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('/assets/img/apple/apple-touch-icon-76x76.png') }}" />
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/assets/img/apple/apple-touch-icon-114x114.png') }}" />
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('/assets/img/apple/apple-touch-icon-120x120.png') }}" />
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('/assets/img/apple/apple-touch-icon-144x144.png') }}" />
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('/assets/img/apple/apple-touch-icon-152x152.png') }}" />
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/img/apple/apple-touch-icon-180x180.png') }}" />
+    <link rel="apple-touch-icon" href="{{ asset('/assets/img/apple-touch-icon.png') }}" />
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/assets/img/apple-touch-icon-57x57.png') }}" />
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/assets/img/apple-touch-icon-72x72.png') }}" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('/assets/img/apple-touch-icon-76x76.png') }}" />
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/assets/img/apple-touch-icon-114x114.png') }}" />
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('/assets/img/apple-touch-icon-120x120.png') }}" />
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('/assets/img/apple-touch-icon-144x144.png') }}" />
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('/assets/img/apple-touch-icon-152x152.png') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/img/apple-touch-icon-180x180.png') }}" />
 
     <link rel="icon" href="{{ asset('/assets/img/favicon.ico') }}">
 
