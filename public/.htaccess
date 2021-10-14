@@ -38,7 +38,8 @@
 
 
 <Ifmodule mod_headers.c>
-
+    Header set Access-Control-Allow-Origin "*"
+    
     <FilesMatch "\\.(ico|jpe?g|png|gif|swf|svg)$">
         Header set Cache-Control "max-age=2592000, public"
     </FilesMatch>
